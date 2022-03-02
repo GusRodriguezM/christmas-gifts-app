@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const gifts = [
+    {id: 1, name: 'socks'},
+    {id: 2, name: 'ugly sweater'},
+    {id: 3, name: 'Santa\'s hat'},
+    {id: 4, name: 'snow sled'},
+    {id: 5, name: 'snowball gun'},
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Christmas gifts</h1>
+      <ul>
+        {
+          gifts.map((gift) => (
+            <li>{gift.name}</li>
+          ))
+        }
+      </ul>
+
     </div>
   );
 }
