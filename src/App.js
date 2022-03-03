@@ -12,15 +12,16 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Christmas gifts</h1>
-      <ul>
-        {
-          gifts.map((gift) => (
-            <li>{gift.name}</li>
-          ))
-        }
-      </ul>
-
+      <div className='list'>
+        <h1>Christmas gifts</h1>
+        <ul>
+          {
+            gifts.map((gift) => (
+              <li>{gift.name}</li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
   );
 }
