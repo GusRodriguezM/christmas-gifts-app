@@ -7,11 +7,11 @@ import './App.css';
 function App() {
 
   const [gifts, setGifts] = useState([
-    {name: 'socks'},
-    {name: 'ugly sweater'},
-    {name: 'Santa\'s hat'},
-    {name: 'snow sled'},
-    {name: 'snowball gun'},
+    // {name: 'socks'},
+    // {name: 'ugly sweater'},
+    // {name: 'Santa\'s hat'},
+    // {name: 'snow sled'},
+    // {name: 'snowball gun'},
   ]);
 
   const [formValues, handleInputChange, reset] = useForm({
@@ -24,6 +24,11 @@ function App() {
     e.preventDefault(); 
     setGifts([...gifts, formValues]);
     reset();
+  }
+
+  const handleDeleteGift = (i) => {
+    const auxGifts = gifts.filter((gift,idx) => idx !== i);
+    setGifts(auxGifts);
   }
 
   return (
@@ -50,7 +55,12 @@ function App() {
         <ul>
           {
             gifts.map((gift, i) => (
-              <li key={i}>{gift.name}</li>
+              <div key={i}>
+                <li>{gift.name}</li>
+                <button onClick={() => handleDeleteGift(i)}>
+                  Delete
+                </button>
+              </div>
             ))
           }
         </ul>
