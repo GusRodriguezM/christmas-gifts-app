@@ -14,10 +14,16 @@ export const Container = () => {
     // {id: 5, name: 'snowball gun'},
   ]);
 
+  /**
+   * 
+   * TODO: Add another restriction to avoid adding gifts with unnecessary spaces (begin, middle, end)
+   *       And another restriction to prevent the user adds just blank spaces
+   */
   const handleAddGift = (addGift) => {
-    console.log(addGift);
-    setGifts([...gifts, addGift]);
-  }
+    gifts.some(gift => gift.name.toLowerCase() === addGift.name.toLowerCase())
+      ? console.log('Please, do not repeat the gift')
+      : setGifts([...gifts, addGift]);
+  } 
 
   const handleDeleteGift = (id) => {
     const auxGifts = gifts.filter(gift => gift.id !== id);

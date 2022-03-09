@@ -14,7 +14,7 @@ export const GiftsForm = ({ handleAddGift }) => {
     e.preventDefault();
     handleAddGift({id: (+new Date()).toString(), name: name});
     reset();
-  }
+  }  
 
   return (
       <form onSubmit={handleSubmit}>
@@ -29,6 +29,7 @@ export const GiftsForm = ({ handleAddGift }) => {
 
         <button
           type='submit'
+          disabled={name === '' ? true : false}
         >
           Add a gift
         </button>
