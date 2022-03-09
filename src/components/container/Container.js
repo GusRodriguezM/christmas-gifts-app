@@ -24,6 +24,10 @@ export const Container = () => {
     setGifts(auxGifts);
   }
 
+  const handleCleanList = () => {
+    setGifts([]);
+  }
+
   return (
     <div className='list'>
         <h1>Christmas gifts</h1>
@@ -37,6 +41,12 @@ export const Container = () => {
             ))
           }
         </ul>
+
+        <button
+          onClick={handleCleanList}
+        >
+          Clean the list
+        </button>
 
     </div>
   )
