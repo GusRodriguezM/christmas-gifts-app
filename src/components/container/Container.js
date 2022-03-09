@@ -34,13 +34,16 @@ export const Container = () => {
 
         <GiftsForm handleAddGift={handleAddGift} />
 
-        <ul>
-          {
-            gifts.map((gift, i) => (
-              <GiftsList key={i} {...gift} handleDeleteGift={handleDeleteGift} />
-            ))
-          }
-        </ul>
+        {
+          gifts.length === 0 ? 'Please start adding gifts!' : 
+          <ul>
+            {
+              gifts.map((gift, i) => (
+                <GiftsList key={i} {...gift} handleDeleteGift={handleDeleteGift} />
+              ))
+            }
+          </ul>
+        }
 
         <button
           onClick={handleCleanList}
