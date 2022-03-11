@@ -5,14 +5,15 @@ import { useForm } from '../../hooks/useForm';
 export const GiftsForm = ({ handleAddGift }) => {
 
   const [formValues, handleInputChange, reset] = useForm({
-    name: ''
+    name: '',
+    quantity: ''
   });
 
-  const { name } = formValues;
+  const { name, quantity } = formValues;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAddGift({id: (+new Date()).toString(), name: name});
+    handleAddGift({id: (+new Date()).toString(), name: name, quantity: quantity});
     reset();
   }  
 
@@ -24,6 +25,19 @@ export const GiftsForm = ({ handleAddGift }) => {
           name='name'
           value={name}
           autoComplete='off'
+          onChange={handleInputChange}
+        />
+
+        <input 
+          type='number'
+          name='quantity'
+          value={quantity}
+          autoComplete='off'
+          min={1}
+          max={100}
+          minLength={1}
+          maxLength={3}
+          required
           onChange={handleInputChange}
         />
 

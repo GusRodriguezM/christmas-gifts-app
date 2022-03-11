@@ -23,6 +23,8 @@ export const Container = () => {
     gifts.some(gift => gift.name.toLowerCase() === addGift.name.toLowerCase())
       ? console.log('Please, do not repeat the gift')
       : setGifts([...gifts, addGift]);
+
+    console.log(gifts);
   } 
 
   const handleDeleteGift = (id) => {
