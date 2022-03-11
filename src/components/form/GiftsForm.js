@@ -6,14 +6,15 @@ export const GiftsForm = ({ handleAddGift }) => {
 
   const [formValues, handleInputChange, reset] = useForm({
     name: '',
-    quantity: ''
+    quantity: '',
+    imageUrl: ''
   });
 
-  const { name, quantity } = formValues;
+  const { name, quantity, imageUrl } = formValues;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAddGift({id: (+new Date()).toString(), name: name, quantity: quantity});
+    handleAddGift({id: (+new Date()).toString(), name: name, image: imageUrl, quantity: quantity});
     reset();
   }  
 
@@ -25,6 +26,14 @@ export const GiftsForm = ({ handleAddGift }) => {
           name='name'
           value={name}
           autoComplete='off'
+          onChange={handleInputChange}
+        />
+
+        <input 
+          type='text'
+          placeholder='https://your-image'
+          name='imageUrl'
+          value={imageUrl}
           onChange={handleInputChange}
         />
 
