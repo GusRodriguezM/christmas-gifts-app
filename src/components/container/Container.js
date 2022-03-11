@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useState } from 'react';
 import { GiftsForm } from '../form/GiftsForm';
@@ -36,6 +36,16 @@ export const Container = () => {
     setGifts([]);
   }
 
+  //Read the localStorage when the App starts
+  useEffect(() => {
+    setGifts(JSON.parse(localStorage.getItem('gifts')));
+  }, []);
+  
+  //Save the gifts list in the local storage every time the state changes
+  useEffect(() => {
+    localStorage.setItem('gifts', JSON.stringify(gifts) || '');
+  }, [gifts]);
+  
   return (
     <div className='list'>
         <h1>Christmas gifts</h1>
