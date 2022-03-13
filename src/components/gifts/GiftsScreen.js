@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 
 import { useState } from 'react';
-import { GiftsForm } from '../form/GiftsForm';
-import { GiftsList } from '../gift/GiftsList';
+import { GiftsFormModal } from './GiftsFormModal';
+import { GiftsList } from './GiftsList';
 
-export const Container = () => {
+export const GiftsScreen = () => {
 
   const [gifts, setGifts] = useState([
     // {id: 1, name: 'socks'},
@@ -50,7 +50,7 @@ export const Container = () => {
     <div className='list'>
         <h1>Christmas gifts</h1>
 
-        <GiftsForm handleAddGift={handleAddGift} />
+        <GiftsFormModal handleAddGift={handleAddGift} />
 
         {
           gifts.length === 0 ? 'Please start adding gifts!' : 
