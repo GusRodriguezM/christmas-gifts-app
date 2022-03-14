@@ -26,14 +26,23 @@ export const GiftsFormModal = ({ handleAddGift }) => {
     const [formValues, handleInputChange, reset] = useForm({
         name: '',
         quantity: '',
-        imageUrl: ''
+        imageUrl: '',
+        person: ''
     });
     
-    const { name, quantity, imageUrl } = formValues;
+    const { name, quantity, imageUrl, person } = formValues;
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleAddGift({id: (+new Date()).toString(), name: name, image: imageUrl, quantity: quantity});
+        handleAddGift(
+            {
+                id: (+new Date()).toString(),
+                name: name,
+                image: imageUrl,
+                quantity: quantity,
+                person: person
+            }
+        );
         reset();
         closeModal();
     }
@@ -81,7 +90,16 @@ export const GiftsFormModal = ({ handleAddGift }) => {
                     />
 
                     <input 
+                        type='text'
+                        placeholder='To [name]'
+                        name='person'
+                        value={person}
+                        onChange={handleInputChange}
+                    />
+
+                    <input 
                         type='number'
+                        placeholder='Quantity'
                         name='quantity'
                         value={quantity}
                         autoComplete='off'

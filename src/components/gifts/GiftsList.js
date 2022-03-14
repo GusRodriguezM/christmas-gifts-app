@@ -2,7 +2,7 @@ import React from 'react';
 
 import './GiftsList.css'
 
-export const GiftsList = ({ id, name, quantity, image, handleDeleteGift }) => {
+export const GiftsList = ({ id, name, quantity, image, person, handleDeleteGift }) => {
   return (
     <div className='gift'>
       
@@ -11,6 +11,7 @@ export const GiftsList = ({ id, name, quantity, image, handleDeleteGift }) => {
       <div className='gift-info'>
         <span>{name}</span>
         <span>{quantity}</span>
+        <span>{person}</span>
       </div>
 
       <button onClick={() => handleDeleteGift(id)}>
