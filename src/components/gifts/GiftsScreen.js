@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { GiftsFormModal } from './GiftsFormModal';
 import { GiftsList } from './GiftsList';
 
+import './GiftsScreen.css';
+
 export const GiftsScreen = () => {
 
   const [gifts, setGifts] = useState([
@@ -47,23 +49,24 @@ export const GiftsScreen = () => {
   }, [gifts]);
   
   return (
-    <div className='list'>
+    <div className='content'>
         <h1>Christmas gifts</h1>
 
         <GiftsFormModal handleAddGift={handleAddGift} />
 
         {
           gifts.length === 0 ? 'Please start adding gifts!' : 
-          <ul>
+          <div className='list'>
             {
               gifts.map((gift, i) => (
                 <GiftsList key={i} {...gift} handleDeleteGift={handleDeleteGift} />
               ))
             }
-          </ul>
+          </div>
         }
 
         <button
+          className='cleanButton'
           onClick={handleCleanList}
         >
           Clean the list

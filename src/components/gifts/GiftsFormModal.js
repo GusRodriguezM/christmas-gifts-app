@@ -4,6 +4,8 @@ import Modal from 'react-modal';
 
 import { useForm } from '../../hooks/useForm';
 
+import './GiftsFormModal.css';
+
 const customStyles = {
     content: {
         top: '50%',
@@ -55,54 +57,56 @@ export const GiftsFormModal = ({ handleAddGift }) => {
                 onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel='Example Modal'
+                className='modal'
+                overlayClassName='modal-fondo'
             >
 
-                <form onSubmit={handleSubmit}>
+                <form className='container' onSubmit={handleSubmit}>
 
                     <input 
-                    type='text'
-                    placeholder='Your gift'
-                    name='name'
-                    value={name}
-                    autoComplete='off'
-                    onChange={handleInputChange}
+                        type='text'
+                        placeholder='Your gift'
+                        name='name'
+                        value={name}
+                        autoComplete='off'
+                        onChange={handleInputChange}
                     />
 
                     <input 
-                    type='text'
-                    placeholder='https://your-image'
-                    name='imageUrl'
-                    value={imageUrl}
-                    onChange={handleInputChange}
+                        type='text'
+                        placeholder='https://your-image'
+                        name='imageUrl'
+                        value={imageUrl}
+                        onChange={handleInputChange}
                     />
 
                     <input 
-                    type='number'
-                    name='quantity'
-                    value={quantity}
-                    autoComplete='off'
-                    min={1}
-                    max={100}
-                    minLength={1}
-                    maxLength={3}
-                    required
-                    onChange={handleInputChange}
+                        type='number'
+                        name='quantity'
+                        value={quantity}
+                        autoComplete='off'
+                        min={1}
+                        max={100}
+                        minLength={1}
+                        maxLength={3}
+                        required
+                        onChange={handleInputChange}
                     />
 
-                    <button
-                    type='submit'
-                    disabled={name === '' ? true : false}
-                    >
-                    Add a gift
-                    </button>
+                    <div className='button-group'>
+                        <button
+                            type='submit'
+                            disabled={name === '' ? true : false}
+                        >
+                            Add a gift
+                        </button>
+
+                        <button onClick={closeModal}>
+                            Close
+                        </button>
+                    </div>
 
                 </form>
-                
-
-                <button onClick={closeModal}>
-                    Close
-                </button>
-
             </Modal>
         </div>
     )
