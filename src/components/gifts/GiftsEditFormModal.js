@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 import Modal from 'react-modal';
 
-import { useForm } from '../../hooks/useForm';
-
 import './GiftsFormModal.css';
 
 const customStyles = {
@@ -19,11 +17,11 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export const GiftsFormModal = ({ handleAddGift }) => {
+export const GiftsEditFormModal = ({ id, handleEditGift }) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    const [formValues, handleInputChange, reset] = useForm({
+    const [formValues, setFormValues] = useState({
         name: '',
         quantity: '',
         imageUrl: '',
@@ -34,21 +32,31 @@ export const GiftsFormModal = ({ handleAddGift }) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleAddGift(
+        handleEditGift(
             {
-                id: (+new Date()).toString(),
+                id: id,
                 name: name,
                 image: imageUrl,
                 quantity: quantity,
                 person: person
             }
         );
-        reset();
+        setFormValues({});
         closeModal();
+    }
+
+    const handleInputChange = ({ target }) => {
+        setFormValues({
+            ...formValues,
+            [target.name]: target.value
+        });
     }
 
     const openModal = () => {
         setModalIsOpen(true);
+        const list = JSON.parse(localStorage.getItem('gifts'));
+        const giftToEdit = list.filter(gift => gift.id === id);
+        setFormValues(giftToEdit[0]);
     }
 
     const closeModal = () => {
@@ -58,9 +66,8 @@ export const GiftsFormModal = ({ handleAddGift }) => {
     return (
         
         <div>
-
             <button onClick={openModal}>
-                Add a gift
+                Edit
             </button>
 
             <Modal

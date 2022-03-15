@@ -29,6 +29,11 @@ export const GiftsScreen = () => {
     console.log(gifts);
   } 
 
+  const handleEditGift = (editGift) => {
+    let newList = gifts.map(gift => gift.id === editGift.id ? editGift : gift );
+    setGifts(newList);
+  }
+
   const handleDeleteGift = (id) => {
     const auxGifts = gifts.filter(gift => gift.id !== id);
     setGifts(auxGifts);
@@ -59,7 +64,7 @@ export const GiftsScreen = () => {
           <div className='list'>
             {
               gifts.map((gift, i) => (
-                <GiftsList key={i} {...gift} handleDeleteGift={handleDeleteGift} />
+                <GiftsList key={i} {...gift} handleEditGift={handleEditGift} handleDeleteGift={handleDeleteGift} />
               ))
             }
           </div>
