@@ -17,18 +17,18 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export const GiftsEditFormModal = ({ id, handleEditGift }) => {
+export const GiftsEditFormModal = ({ id, handleEditGift, gifts }) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const [formValues, setFormValues] = useState({
         name: '',
         quantity: '',
-        imageUrl: '',
+        image: '',
         person: ''
     });
     
-    const { name, quantity, imageUrl, person } = formValues;
+    const { name, quantity, image, person } = formValues;
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,12 +36,11 @@ export const GiftsEditFormModal = ({ id, handleEditGift }) => {
             {
                 id: id,
                 name: name,
-                image: imageUrl,
+                image: image,
                 quantity: quantity,
                 person: person
             }
         );
-        setFormValues({});
         closeModal();
     }
 
@@ -54,8 +53,7 @@ export const GiftsEditFormModal = ({ id, handleEditGift }) => {
 
     const openModal = () => {
         setModalIsOpen(true);
-        const list = JSON.parse(localStorage.getItem('gifts'));
-        const giftToEdit = list.filter(gift => gift.id === id);
+        const giftToEdit = gifts.filter(gift => gift.id === id);
         setFormValues(giftToEdit[0]);
     }
 
@@ -93,8 +91,8 @@ export const GiftsEditFormModal = ({ id, handleEditGift }) => {
                     <input 
                         type='text'
                         placeholder='https://your-image'
-                        name='imageUrl'
-                        value={imageUrl}
+                        name='image'
+                        value={image || ''}
                         onChange={handleInputChange}
                     />
 

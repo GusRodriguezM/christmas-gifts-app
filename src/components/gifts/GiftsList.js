@@ -3,7 +3,7 @@ import { GiftsEditFormModal } from './GiftsEditFormModal';
 
 import './GiftsList.css'
 
-export const GiftsList = ({ id, name, quantity, image, person, handleEditGift, handleDeleteGift }) => {
+export const GiftsList = ({ id, name, quantity, image, person, handleEditGift, handleDeleteGift, gifts }) => {
   return (
     <div className='gift'>
       
@@ -15,7 +15,7 @@ export const GiftsList = ({ id, name, quantity, image, person, handleEditGift, h
         <span>{person}</span>
       </div>
 
-      <GiftsEditFormModal handleEditGift={handleEditGift} id={id} />
+      <GiftsEditFormModal handleEditGift={handleEditGift} id={id} gifts={gifts} />
 
       <button onClick={() => handleDeleteGift(id)}>
         Delete

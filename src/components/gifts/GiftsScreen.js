@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useState } from 'react';
+import { apiGifts } from '../../helpers/apiGifts';
 import { GiftsFormModal } from './GiftsFormModal';
 import { GiftsList } from './GiftsList';
 
@@ -8,13 +9,7 @@ import './GiftsScreen.css';
 
 export const GiftsScreen = () => {
 
-  const [gifts, setGifts] = useState([
-    // {id: 1, name: 'socks'},
-    // {id: 2, name: 'ugly sweater'},
-    // {id: 3, name: 'Santa\'s hat'},
-    // {id: 4, name: 'snow sled'},
-    // {id: 5, name: 'snowball gun'},
-  ]);
+  const [gifts, setGifts] = useState([]);
 
   /**
    * 
@@ -45,12 +40,17 @@ export const GiftsScreen = () => {
 
   //Read the localStorage when the App starts
   useEffect(() => {
-    setGifts(JSON.parse(localStorage.getItem('gifts')));
+    apiGifts.getGifts()
+      .then(gifts => setGifts(gifts.data))
+      .catch(console.log)
+      .finally();
   }, []);
   
   //Save the gifts list in the local storage every time the state changes
   useEffect(() => {
-    localStorage.setItem('gifts', JSON.stringify(gifts) || '');
+    apiGifts.saveGifts(gifts)
+      .then(console.log)
+      .catch(console.log);
   }, [gifts]);
   
   return (
@@ -64,7 +64,7 @@ export const GiftsScreen = () => {
           <div className='list'>
             {
               gifts.map((gift, i) => (
-                <GiftsList key={i} {...gift} handleEditGift={handleEditGift} handleDeleteGift={handleDeleteGift} />
+                <GiftsList key={i} {...gift} gifts={gifts} handleEditGift={handleEditGift} handleDeleteGift={handleDeleteGift} />
               ))
             }
           </div>
