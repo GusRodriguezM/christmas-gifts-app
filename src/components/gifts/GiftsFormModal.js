@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Modal from 'react-modal';
 
-import { useForm } from '../../hooks/useForm';
+import { defaultGifts } from '../../helpers/defaultGifts';
 
 import './GiftsFormModal.css';
 
@@ -23,14 +23,16 @@ export const GiftsFormModal = ({ handleAddGift }) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    const [formValues, handleInputChange, reset] = useForm({
+    let staticValues = {
         name: '',
         quantity: '',
-        imageUrl: '',
+        image: '',
         person: ''
-    });
+    }
+
+    const [formValues, setFormValues] = useState(staticValues);
     
-    const { name, quantity, imageUrl, person } = formValues;
+    const { name, quantity, image, person } = formValues;
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -38,13 +40,28 @@ export const GiftsFormModal = ({ handleAddGift }) => {
             {
                 id: (+new Date()).toString(),
                 name: name,
-                image: imageUrl,
+                image: image,
                 quantity: quantity,
                 person: person
             }
         );
-        reset();
         closeModal();
+    }
+
+    const handleInputChange = ({ target }) => {
+        setFormValues({
+            ...formValues,
+            [target.name]: target.value
+        });
+    }
+
+    /**
+     * TODO: Add the complete gift? (name, image, person, quantity)
+     */
+    const handleGetRandomGift = () => {
+        const rand = Math.floor(Math.random() * defaultGifts.length);
+        const randomGift = defaultGifts[rand];
+        setFormValues({...formValues, name: randomGift.name});
     }
 
     const openModal = () => {
@@ -53,6 +70,7 @@ export const GiftsFormModal = ({ handleAddGift }) => {
 
     const closeModal = () => {
         setModalIsOpen(false);
+        setFormValues(staticValues);
     }
 
     return (
@@ -83,11 +101,15 @@ export const GiftsFormModal = ({ handleAddGift }) => {
                         onChange={handleInputChange}
                     />
 
+                    <button onClick={handleGetRandomGift}>
+                        Surprise Me!
+                    </button>
+
                     <input 
                         type='text'
                         placeholder='https://your-image'
-                        name='imageUrl'
-                        value={imageUrl}
+                        name='image'
+                        value={image}
                         onChange={handleInputChange}
                     />
 
