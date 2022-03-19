@@ -26,13 +26,14 @@ export const GiftsFormModal = ({ handleAddGift }) => {
     let staticValues = {
         name: '',
         quantity: '',
+        price: '',
         image: '',
         person: ''
     }
 
     const [formValues, setFormValues] = useState(staticValues);
     
-    const { name, quantity, image, person } = formValues;
+    const { name, quantity, price, image, person } = formValues;
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -42,6 +43,7 @@ export const GiftsFormModal = ({ handleAddGift }) => {
                 name: name,
                 image: image,
                 quantity: quantity,
+                price: price,
                 person: person
             }
         );
@@ -104,6 +106,20 @@ export const GiftsFormModal = ({ handleAddGift }) => {
                     <button onClick={handleGetRandomGift}>
                         Surprise Me!
                     </button>
+
+                    <input
+                        type='number'
+                        name='price'
+                        placeholder='Price'
+                        value={price}
+                        autoComplete='off'
+                        min={1}
+                        max={9999}
+                        minLength={1}
+                        maxLength={3}
+                        required
+                        onChange={handleInputChange}
+                    />
 
                     <input 
                         type='text'

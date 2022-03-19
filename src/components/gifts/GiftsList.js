@@ -3,7 +3,7 @@ import { GiftsEditFormModal } from './GiftsEditFormModal';
 
 import './GiftsList.css'
 
-export const GiftsList = ({ id, name, quantity, image, person, handleEditGift, handleDeleteGift, gifts }) => {
+export const GiftsList = ({ id, name, quantity, price, image, person, handleEditGift, handleDeleteGift, gifts }) => {
   return (
     <div className='gift'>
       
@@ -11,7 +11,7 @@ export const GiftsList = ({ id, name, quantity, image, person, handleEditGift, h
       
       <div className='gift-info'>
         <span>{name}</span>
-        <span>{quantity}</span>
+        <span className='qty-price'>({quantity}) - {quantity * price}</span>
         <span>{person}</span>
       </div>
 

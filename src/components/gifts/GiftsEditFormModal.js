@@ -24,11 +24,12 @@ export const GiftsEditFormModal = ({ id, handleEditGift, gifts }) => {
     const [formValues, setFormValues] = useState({
         name: '',
         quantity: '',
+        price: '',
         image: '',
         person: ''
     });
     
-    const { name, quantity, image, person } = formValues;
+    const { name, quantity, price, image, person } = formValues;
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -38,6 +39,7 @@ export const GiftsEditFormModal = ({ id, handleEditGift, gifts }) => {
                 name: name,
                 image: image,
                 quantity: quantity,
+                price: price,
                 person: person
             }
         );
@@ -85,6 +87,20 @@ export const GiftsEditFormModal = ({ id, handleEditGift, gifts }) => {
                         name='name'
                         value={name}
                         autoComplete='off'
+                        onChange={handleInputChange}
+                    />
+
+                    <input
+                        type='number'
+                        name='price'
+                        placeholder='Price'
+                        value={price}
+                        autoComplete='off'
+                        min={1}
+                        max={9999}
+                        minLength={1}
+                        maxLength={3}
+                        required
                         onChange={handleInputChange}
                     />
 

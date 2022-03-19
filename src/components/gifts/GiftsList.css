@@ -2,17 +2,23 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding: 10px 0px 10px 0px;
     width: 100%;
 }
 
 .gift-info {
-    width: 200px;
+    width: 450px;
     font-size: 2rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 img {
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
+}
+
+.qty-price {
+    padding: 0px 50px 0px 50px;
 }
