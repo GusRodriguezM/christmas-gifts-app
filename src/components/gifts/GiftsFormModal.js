@@ -44,7 +44,8 @@ export const GiftsFormModal = ({ handleAddGift }) => {
                 image: image,
                 quantity: quantity,
                 price: price,
-                person: person
+                person: person,
+                total: quantity * price
             }
         );
         closeModal();

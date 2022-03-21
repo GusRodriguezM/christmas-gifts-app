@@ -10,6 +10,7 @@ import './GiftsScreen.css';
 export const GiftsScreen = () => {
 
   const [gifts, setGifts] = useState([]);
+  const [reduced, setReduced] = useState(0);
 
   /**
    * 
@@ -52,6 +53,18 @@ export const GiftsScreen = () => {
       .then(console.log)
       .catch(console.log);
   }, [gifts]);
+
+  useEffect(() => {
+
+    let subtotals = [];
+
+    if(gifts.length !== 0){
+      gifts.map(gift => subtotals.push(gift.total));
+      setReduced( subtotals.reduce((previousValue, currentValue) => previousValue + currentValue) );
+    }else{
+      setReduced(0);
+    }
+  }, [gifts]);
   
   return (
     <div className='content'>
@@ -60,15 +73,26 @@ export const GiftsScreen = () => {
         <GiftsFormModal handleAddGift={handleAddGift} />
 
         {
-          gifts.length === 0 ? 'Please start adding gifts!' : 
-          <div className='list'>
-            {
-              gifts.map((gift, i) => (
-                <GiftsList key={i} {...gift} gifts={gifts} handleEditGift={handleEditGift} handleDeleteGift={handleDeleteGift} />
-              ))
-            }
-          </div>
+          <>
+            {gifts.length === 0 ? 'Please start adding gifts!' : 
+            <div className='list'>
+              {
+                gifts.map((gift, i) => (
+                  <GiftsList key={i} {...gift} gifts={gifts} handleEditGift={handleEditGift} handleDeleteGift={handleDeleteGift} />
+                ))
+              }
+            </div>}
+
+            <br/>
+
+            <div className='total'>
+              {
+                `Total: ${reduced}`
+              }
+            </div>
+          </>
         }
+
 
         <button
           className='cleanButton'
