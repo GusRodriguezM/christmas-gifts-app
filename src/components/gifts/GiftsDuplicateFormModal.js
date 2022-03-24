@@ -17,7 +17,7 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export const GiftsEditFormModal = ({ id, handleEditGift, gifts }) => {
+export const GiftsDuplicateFormModal = ({ id, handleDuplicateGift, gifts }) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -33,7 +33,7 @@ export const GiftsEditFormModal = ({ id, handleEditGift, gifts }) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleEditGift(
+        handleDuplicateGift(
             {
                 id: id,
                 name: name,
@@ -69,7 +69,7 @@ export const GiftsEditFormModal = ({ id, handleEditGift, gifts }) => {
         <div>
             
             <button onClick={openModal}>
-                Edit
+                Duplicate
             </button>
 
             <Modal

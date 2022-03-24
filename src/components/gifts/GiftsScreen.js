@@ -35,6 +35,28 @@ export const GiftsScreen = () => {
     setGifts(auxGifts);
   }
 
+  /**
+   * 
+   * TODO: It's necessary to diable some fields to add a duplcated gift? 
+   */
+
+  const handleDuplicateGift = (duplicateGift) => {
+    //Spread the content of the list
+    const duplicateGifts = [...gifts];
+
+    //Find an index of the gift to duplicate
+    const idx = duplicateGifts.findIndex(duplicate => duplicate.id === duplicateGift.id);
+
+    //Change the id of the new and fresh gift
+    duplicateGift.id = (+new Date()).toString();
+    
+    //Add the gift into the id plus 1 of the duplicated gift
+    duplicateGifts.splice(idx + 1, 0, duplicateGift);
+
+    //Set the new list of gifts
+    setGifts(duplicateGifts);
+  }
+
   const handleCleanList = () => {
     setGifts([]);
   }
@@ -78,7 +100,14 @@ export const GiftsScreen = () => {
             <div className='list'>
               {
                 gifts.map((gift, i) => (
-                  <GiftsList key={i} {...gift} gifts={gifts} handleEditGift={handleEditGift} handleDeleteGift={handleDeleteGift} />
+                  <GiftsList
+                    key={i} 
+                    {...gift}
+                    gifts={gifts}
+                    handleEditGift={handleEditGift}
+                    handleDeleteGift={handleDeleteGift}
+                    handleDuplicateGift={handleDuplicateGift}
+                  />
                 ))
               }
             </div>}
