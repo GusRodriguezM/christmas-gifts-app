@@ -1,0 +1,15 @@
+.main {
+    display: flex;
+    align-items: center;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.gift-image {
+    height: 50px;
+    width: 50px;
+    padding: 5px 0px 5px 0px;
+}

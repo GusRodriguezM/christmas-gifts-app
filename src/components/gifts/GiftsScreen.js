@@ -6,6 +6,7 @@ import { GiftsFormModal } from './GiftsFormModal';
 import { GiftsList } from './GiftsList';
 
 import './GiftsScreen.css';
+import { VisualizeGiftsModal } from './VisualizeGiftsModal';
 
 export const GiftsScreen = () => {
 
@@ -122,13 +123,11 @@ export const GiftsScreen = () => {
           </>
         }
 
-
-        <button
-          className='cleanButton'
-          onClick={handleCleanList}
-        >
+        <button onClick={handleCleanList}>
           Clean the list
         </button>
+
+        <VisualizeGiftsModal gifts={gifts} />
 
     </div>
   )

@@ -8,6 +8,7 @@
     justify-content: center;
     transition: opacity .2s ease-in-out;
     z-index: 999;
+    padding-top: 30%;
 }
 
 .modal-fondo {
