@@ -14,17 +14,6 @@
     overflow: scroll;
 }
 
-button {
-    padding: 10px 10px;
-    margin: 20px 20px;
-    text-align: center;
-    color: white;
-    background-color: #C30F16;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
-
 .total {
     font-size: 30px;
 }

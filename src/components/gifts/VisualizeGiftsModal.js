@@ -45,7 +45,10 @@ export const VisualizeGiftsModal = ({ gifts }) => {
                 className='modal'
                 overlayClassName='modal-fondo'
             >
+
                 <>
+                    {/* <h2>Your list</h2> */}
+
                     {
                         gifts.map((gift, i) => (
                             <div className='main' key={i}>
@@ -60,11 +63,9 @@ export const VisualizeGiftsModal = ({ gifts }) => {
                     }
                 </>
 
-                <div className='button-group'>
-                    <button onClick={closeModal}>
-                        Close
-                    </button>
-                </div>
+                <button className='close-modal-btn' onClick={closeModal}>
+                    Close
+                </button>
 
             </Modal>
         </div>

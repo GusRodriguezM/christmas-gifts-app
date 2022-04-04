@@ -14,11 +14,6 @@
     flex-wrap: wrap;
 }
 
-img {
-    height: 100px;
-    width: 100px;
-}
-
 .qty-price {
     padding: 0px 50px 0px 50px;
 }

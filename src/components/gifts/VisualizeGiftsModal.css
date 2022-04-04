@@ -1,15 +1,26 @@
 .main {
     display: flex;
     align-items: center;
+    padding: 5px 10px 5px 10px;
 }
 
 .info {
     display: flex;
     flex-direction: column;
+    padding-left: 10px;
 }
 
 .gift-image {
     height: 50px;
     width: 50px;
     padding: 5px 0px 5px 0px;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+}
+
+.close-modal-btn {
+    margin-bottom: 5px;
 }
