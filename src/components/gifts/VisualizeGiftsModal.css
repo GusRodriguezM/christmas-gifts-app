@@ -1,7 +1,7 @@
 .main {
     display: flex;
     align-items: center;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 0px 5px 3px;
 }
 
 .info {
@@ -21,6 +21,12 @@
     flex-direction: column;
 }
 
-.close-modal-btn {
+.modal-btn {
     margin-bottom: 5px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0px 5px 0px;
 }

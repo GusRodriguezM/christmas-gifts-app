@@ -32,8 +32,12 @@ export const VisualizeGiftsModal = ({ gifts }) => {
     return (
         
         <div>
-
-            <button onClick={openModal}>
+            
+            <button 
+                disabled={gifts.length === 0 ? true : false}
+                className={gifts.length === 0 ? 'button-disabled' : null}
+                onClick={openModal}
+            >
                 Visualize
             </button>
 
@@ -63,9 +67,15 @@ export const VisualizeGiftsModal = ({ gifts }) => {
                     }
                 </>
 
-                <button className='close-modal-btn' onClick={closeModal}>
-                    Close
-                </button>
+                <div className='button-group'>
+                    <button className='modal-btn'>
+                        Print
+                    </button>
+
+                    <button className='modal-btn' onClick={closeModal}>
+                        Close
+                    </button>
+                </div>
 
             </Modal>
         </div>

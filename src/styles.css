@@ -1,4 +1,4 @@
-html, body {
+body {
     background-image: url('https://images.unsplash.com/photo-1588158074612-37ee7e776f91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80');
     background-repeat: no-repeat;
     background-size: cover;
@@ -7,7 +7,7 @@ html, body {
 
 button {
     padding: 10px 10px;
-    margin: 5px 5px;
+    margin: 5px 0px 5px 0px;
     text-align: center;
     color: white;
     background-color: #C30F16;
@@ -15,11 +15,20 @@ button {
     cursor: pointer;
     border: 2px solid;
     line-height: 1;
+    width: 6.5rem;
 }
 
 button:hover {
     box-shadow: 0 0.5em 0.5em -0.4em #C30F16;
     transform: translateY(-0.25em);
+}
+
+.button-disabled {
+    background-color: #999595;
+}
+
+.button-disabled:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em #999595;
 }
 
 input {

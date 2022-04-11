@@ -123,7 +123,11 @@ export const GiftsScreen = () => {
           </>
         }
 
-        <button onClick={handleCleanList}>
+        <button 
+          disabled={gifts.length === 0 ? true : false}
+          className={gifts.length === 0 ? 'button-disabled' : null}
+          onClick={handleCleanList}
+        >
           Clean the list
         </button>
 
