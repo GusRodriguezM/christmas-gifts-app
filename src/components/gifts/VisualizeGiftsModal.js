@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
+import { useReactToPrint } from 'react-to-print';
 import Modal from 'react-modal';
+import { GiftsListToPrint } from './GiftsListToPrint';
 
 import './VisualizeGiftsModal.css';
 
@@ -20,6 +22,7 @@ Modal.setAppElement('#root');
 export const VisualizeGiftsModal = ({ gifts }) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const componentRef = useRef();
 
     const openModal = () => {
         setModalIsOpen(true);
@@ -28,6 +31,11 @@ export const VisualizeGiftsModal = ({ gifts }) => {
     const closeModal = () => {
         setModalIsOpen(false);
     }
+
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+        documentTitle: 'Gifts list'        
+    })
 
     return (
         
@@ -50,25 +58,11 @@ export const VisualizeGiftsModal = ({ gifts }) => {
                 overlayClassName='modal-fondo'
             >
 
-                <>
-                    {/* <h2>Your list</h2> */}
-
-                    {
-                        gifts.map((gift, i) => (
-                            <div className='main' key={i}>
-                                <img className='gift-image' alt={gift.name} src={gift.image} />
-
-                                <div className='info'>
-                                    <span>{gift.name} ({gift.quantity})</span>
-                                    <span>{gift.person}</span>
-                                </div>
-                            </div>
-                        ))
-                    }
-                </>
+                {/* Adding a new component with the ref to print and the list of gifts */}
+                <GiftsListToPrint ref={componentRef} gifts={gifts}/>
 
                 <div className='button-group'>
-                    <button className='modal-btn'>
+                    <button className='modal-btn' onClick={handlePrint}>
                         Print
                     </button>
 
