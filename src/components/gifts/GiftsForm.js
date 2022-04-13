@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 
 import Modal from 'react-modal';
 
-import './GiftsFormModal.css';
+import { defaultGifts } from '../../helpers/defaultGifts';
+
+import './GiftsForm.css';
 
 const customStyles = {
     content: {
@@ -17,34 +19,67 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export const GiftsDuplicateFormModal = ({ id, handleDuplicateGift, gifts }) => {
+export const GiftsForm = ({ id, handleAddGift, handleEditGift, handleDuplicateGift, gifts, option }) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    const [formValues, setFormValues] = useState({
+    let staticValues = {
         name: '',
         quantity: '',
         price: '',
         image: '',
         person: ''
-    });
+    }
+
+    const [formValues, setFormValues] = useState(staticValues);
     
     const { name, quantity, price, image, person } = formValues;
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleDuplicateGift(
-            {
-                id: id,
-                name: name,
-                image: image,
-                quantity: quantity,
-                price: price,
-                person: person,
-                total: quantity * price
-            }
-        );
-        closeModal();
+
+        if(option === 'add'){
+            handleAddGift(
+                {
+                    id: (+new Date()).toString(),
+                    name: name,
+                    image: image,
+                    quantity: quantity,
+                    price: price,
+                    person: person,
+                    total: quantity * price
+                }
+            );
+            closeModal();
+        }else if(option === 'edit'){
+            handleEditGift(
+                {
+                    id: id,
+                    name: name,
+                    image: image,
+                    quantity: quantity,
+                    price: price,
+                    person: person,
+                    total: quantity * price
+                }
+            );
+            closeModal();
+        }else if(option === 'duplicate'){
+            handleDuplicateGift(
+                {
+                    id: id,
+                    name: name,
+                    image: image,
+                    quantity: quantity,
+                    price: price,
+                    person: person,
+                    total: quantity * price
+                }
+            );
+            closeModal();
+        }else{
+            closeModal();
+        }
     }
 
     const handleInputChange = ({ target }) => {
@@ -54,23 +89,48 @@ export const GiftsDuplicateFormModal = ({ id, handleDuplicateGift, gifts }) => {
         });
     }
 
+    /**
+     * TODO: Add the complete gift? (name, image, person, quantity)
+     */
+    const handleGetRandomGift = () => {
+        const rand = Math.floor(Math.random() * defaultGifts.length);
+        const randomGift = defaultGifts[rand];
+        setFormValues({...formValues, name: randomGift.name});
+    }
+
     const openModal = () => {
         setModalIsOpen(true);
-        const giftToEdit = gifts.filter(gift => gift.id === id);
-        setFormValues(giftToEdit[0]);
+
+        if(option === 'edit' || option === 'duplicate'){
+            const giftToEdit = gifts.filter(gift => gift.id === id);
+            setFormValues(giftToEdit[0]);
+        }
     }
 
     const closeModal = () => {
         setModalIsOpen(false);
+        setFormValues(staticValues);
     }
 
     return (
         
         <div>
-            
-            <button onClick={openModal}>
-                Duplicate
-            </button>
+
+            {
+                option === 'add' ? (
+                    <button onClick={openModal}>
+                        Add a gift
+                    </button>
+                ) : option === 'edit' ? (
+                    <button onClick={openModal}>
+                        Edit
+                    </button>    
+                ) : option === 'duplicate' ? (
+                    <button onClick={openModal}>
+                        Duplicate
+                    </button>
+                ) : null
+            }
 
             <Modal
                 isOpen={modalIsOpen}
@@ -92,6 +152,10 @@ export const GiftsDuplicateFormModal = ({ id, handleDuplicateGift, gifts }) => {
                         onChange={handleInputChange}
                     />
 
+                    <button onClick={handleGetRandomGift}>
+                        Surprise Me!
+                    </button>
+
                     <input
                         type='number'
                         name='price'
@@ -110,7 +174,7 @@ export const GiftsDuplicateFormModal = ({ id, handleDuplicateGift, gifts }) => {
                         type='text'
                         placeholder='https://your-image'
                         name='image'
-                        value={image || ''}
+                        value={image}
                         onChange={handleInputChange}
                     />
 
