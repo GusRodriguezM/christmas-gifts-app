@@ -1,6 +1,6 @@
 import React from 'react';
-import { GiftsDuplicateFormModal } from './GiftsDuplicateFormModal';
-import { GiftsEditFormModal } from './GiftsEditFormModal';
+
+import { GiftsForm } from './GiftsForm';
 
 import './GiftsList.css'
 
@@ -16,9 +16,9 @@ export const GiftsList = ({ id, name, quantity, price, image, person, handleEdit
         <span>{person}</span>
       </div>
 
-      <GiftsEditFormModal handleEditGift={handleEditGift} id={id} gifts={gifts} />
+      <GiftsForm id={id} handleEditGift={handleEditGift} gifts={gifts} option={'edit'} />
 
-      <GiftsDuplicateFormModal handleDuplicateGift={handleDuplicateGift} id={id} gifts={gifts} />
+      <GiftsForm id={id} handleDuplicateGift={handleDuplicateGift} gifts={gifts} option={'duplicate'} />
 
       <button onClick={() => handleDeleteGift(id)}>
         Delete

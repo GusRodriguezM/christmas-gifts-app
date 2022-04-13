@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { useState } from 'react';
 import { apiGifts } from '../../helpers/apiGifts';
-import { GiftsFormModal } from './GiftsFormModal';
 import { GiftsList } from './GiftsList';
+import { GiftsForm } from './GiftsForm';
+import { VisualizeGiftsModal } from './VisualizeGiftsModal';
 
 import './GiftsScreen.css';
-import { VisualizeGiftsModal } from './VisualizeGiftsModal';
 
 export const GiftsScreen = () => {
 
@@ -93,7 +92,7 @@ export const GiftsScreen = () => {
     <div className='content'>
         <h1>Christmas gifts</h1>
 
-        <GiftsFormModal handleAddGift={handleAddGift} />
+        <GiftsForm handleAddGift={handleAddGift} option={'add'} />
 
         {
           <>
