@@ -17,3 +17,53 @@
 .qty-price {
     padding: 0px 50px 0px 50px;
 }
+
+span {
+    width: 50%;
+    overflow-wrap: break-word;
+}
+
+@media screen and (max-width: 468px) {
+    .gift {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .gift-info {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        width: 100%;
+    }
+
+    .button-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+    .gift {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .gift-info {
+        display: flex;
+        align-content: center;
+        width: 100%;
+    }
+
+    .button-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+}

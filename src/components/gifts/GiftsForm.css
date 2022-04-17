@@ -40,7 +40,7 @@
     padding: 10px;
 }
 
-.container {
+.container-form {
     display: flex;
     flex-direction: column;
     justify-content: space-around;

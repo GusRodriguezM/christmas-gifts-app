@@ -1,7 +1,7 @@
 
 .content {
-    height: 550px;
-    width: 1000px;
+    height: 600px;
+    width: 90%;
     background-color: azure;
     display: flex;
     flex-direction: column;
@@ -10,10 +10,21 @@
 }
 
 .list {
-    width: 100%;
-    overflow: scroll;
+    width: 95%;
+    overflow: auto;
 }
 
 .total {
     font-size: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+    .content {
+        display: flex;
+        height: 510px;
+    }
+
+    .list {
+        width: 90;
+    }
 }

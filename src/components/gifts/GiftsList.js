@@ -12,17 +12,20 @@ export const GiftsList = ({ id, name, quantity, price, image, person, handleEdit
       
       <div className='gift-info'>
         <span>{name}</span>
-        <span className='qty-price'>({quantity}) - {quantity * price}</span>
+        <span>({quantity}) - {quantity * price}</span>
         <span>{person}</span>
       </div>
 
-      <GiftsForm id={id} handleEditGift={handleEditGift} gifts={gifts} option={'edit'} />
+      <div className='button-container'>
+        <GiftsForm id={id} handleEditGift={handleEditGift} gifts={gifts} option={'edit'} />
 
-      <GiftsForm id={id} handleDuplicateGift={handleDuplicateGift} gifts={gifts} option={'duplicate'} />
+        <GiftsForm id={id} handleDuplicateGift={handleDuplicateGift} gifts={gifts} option={'duplicate'} />
 
-      <button onClick={() => handleDeleteGift(id)}>
-        Delete
-      </button>
+        <button onClick={() => handleDeleteGift(id)}>
+          <span>Delete</span>
+          <i className="fa-solid fa-trash"></i>
+        </button>
+      </div>
 
     </div>
   )

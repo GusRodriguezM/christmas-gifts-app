@@ -46,7 +46,8 @@ export const VisualizeGiftsModal = ({ gifts }) => {
                 className={gifts.length === 0 ? 'button-disabled' : null}
                 onClick={openModal}
             >
-                Visualize
+                <span>Visualize</span>
+                <i className="fa-solid fa-eye"></i>
             </button>
 
             <Modal

@@ -112,8 +112,6 @@ export const GiftsScreen = () => {
               }
             </div>}
 
-            <br/>
-
             <div className='total'>
               {
                 `Total: ${reduced}`
@@ -127,7 +125,8 @@ export const GiftsScreen = () => {
           className={gifts.length === 0 ? 'button-disabled' : null}
           onClick={handleCleanList}
         >
-          Clean the list
+          <span>Clean the list</span>
+          <i className="fa-solid fa-dumpster"></i>
         </button>
 
         <VisualizeGiftsModal gifts={gifts} />

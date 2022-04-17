@@ -1,9 +1,18 @@
 body {
+    /*Making the background-image responsive*/
     background-image: url('https://images.unsplash.com/photo-1588158074612-37ee7e776f91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80');
+    background-position: center center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
-    height: 100vh;
+    /* height: 100%;
+    width: 100%; */
 }
+
+/* #root {
+    height: 600px;
+    width: 1350px;
+} */
 
 button {
     padding: 10px 10px;
@@ -39,4 +48,51 @@ input {
 img {
     height: 100px;
     width: 100px;
+}
+
+@media screen and (max-width: 375px) {
+    
+    button {
+        width: 50px;
+        height: 40px;
+    }
+
+    .content button span {
+        display: none;
+    }
+
+}
+
+@media screen and (min-width: 376px) and (max-width: 1440px) {
+
+    .content button i {
+        display: none;
+    }
+
+}
+
+@media screen and (min-width: 376px) and (max-width: 410px) {
+
+    button {    
+        width: 80px;
+        height: 40px;
+    }
+
+    .content button i {
+        display: none;
+    }
+
+}
+
+@media screen and (min-width: 411px) and (max-width: 468px) {
+
+    button {    
+        width: 120px;
+        height: 40px;
+    }
+
+    .content button i {
+        display: none;
+    }
+
 }

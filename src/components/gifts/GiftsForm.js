@@ -119,15 +119,18 @@ export const GiftsForm = ({ id, handleAddGift, handleEditGift, handleDuplicateGi
             {
                 option === 'add' ? (
                     <button onClick={openModal}>
-                        Add a gift
+                        <span>Add a gift</span>
+                        <i className="fa-solid fa-circle-plus"></i>
                     </button>
                 ) : option === 'edit' ? (
                     <button onClick={openModal}>
-                        Edit
-                    </button>    
+                        <span>Edit</span>
+                        <i className='fa-solid fa-pen-to-square'></i>
+                    </button>
                 ) : option === 'duplicate' ? (
                     <button onClick={openModal}>
-                        Duplicate
+                        <span>Duplicate</span>
+                        <i className="fa-solid fa-copy"></i>
                     </button>
                 ) : null
             }
@@ -141,7 +144,7 @@ export const GiftsForm = ({ id, handleAddGift, handleEditGift, handleDuplicateGi
                 overlayClassName='modal-fondo'
             >
 
-                <form className='container' onSubmit={handleSubmit}>
+                <form className='container-form' onSubmit={handleSubmit}>
 
                     <input 
                         type='text'
