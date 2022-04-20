@@ -38,6 +38,13 @@
     max-width: 500px;
     outline: none;
     padding: 10px;
+
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 
 .container-form {
@@ -51,4 +58,52 @@
     display: flex;
     justify-content: space-between;
     padding: 5px 0px 5px 0px;
+}
+
+@media screen and (max-width: 375px) {
+
+    .container-form span {
+        display: none;
+    }
+
+    .container-form input {
+        margin-top: 13px;
+    }
+
+    .modal {
+        transform: translate(-10%, -10%);
+    }
+    
+}
+
+@media screen and (max-width: 425px) {
+
+    .modal {
+        transform: translate(-10%, -10%);
+    }
+    
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+
+    .modal {
+        transform: translate(-22%, -22%);
+    }
+    
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+    .modal {
+        transform: translate(-30%, -30%);
+    }
+    
+}
+
+@media screen and (min-width: 376px) and (max-width: 1440px) {
+    
+    .container-form i {
+        display: none;
+    }
+
 }

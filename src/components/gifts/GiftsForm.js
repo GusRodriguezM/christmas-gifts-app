@@ -6,17 +6,6 @@ import { defaultGifts } from '../../helpers/defaultGifts';
 
 import './GiftsForm.css';
 
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    }
-};
-
 Modal.setAppElement('#root');
 
 export const GiftsForm = ({ id, handleAddGift, handleEditGift, handleDuplicateGift, gifts, option }) => {
@@ -138,7 +127,6 @@ export const GiftsForm = ({ id, handleAddGift, handleEditGift, handleDuplicateGi
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
-                style={customStyles}
                 contentLabel='Example Modal'
                 className='modal'
                 overlayClassName='modal-fondo'
@@ -156,7 +144,8 @@ export const GiftsForm = ({ id, handleAddGift, handleEditGift, handleDuplicateGi
                     />
 
                     <button onClick={handleGetRandomGift}>
-                        Surprise Me!
+                        <span>Surprise Me!</span>
+                        <i className="fa-solid fa-shuffle"></i>
                     </button>
 
                     <input
@@ -208,11 +197,13 @@ export const GiftsForm = ({ id, handleAddGift, handleEditGift, handleDuplicateGi
                             type='submit'
                             disabled={name === '' ? true : false}
                         >
-                            Save
+                            <span>Save</span>
+                            <i className="fa-solid fa-floppy-disk"></i>
                         </button>
 
                         <button onClick={closeModal}>
-                            Close
+                            <span>Close</span>
+                            <i className="fa-solid fa-circle-xmark"></i>
                         </button>
                     </div>
 

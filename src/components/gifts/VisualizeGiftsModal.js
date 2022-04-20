@@ -6,17 +6,6 @@ import { GiftsListToPrint } from './GiftsListToPrint';
 
 import './VisualizeGiftsModal.css';
 
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    }
-};
-
 Modal.setAppElement('#root');
 
 export const VisualizeGiftsModal = ({ gifts }) => {
@@ -53,7 +42,6 @@ export const VisualizeGiftsModal = ({ gifts }) => {
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
-                style={customStyles}
                 contentLabel='Example Modal'
                 className='modal'
                 overlayClassName='modal-fondo'
@@ -64,11 +52,13 @@ export const VisualizeGiftsModal = ({ gifts }) => {
 
                 <div className='button-group'>
                     <button className='modal-btn' onClick={handlePrint}>
-                        Print
+                        <span>Print</span>
+                        <i className="fa-solid fa-print"></i>
                     </button>
 
                     <button className='modal-btn' onClick={closeModal}>
-                        Close
+                        <span>Close</span>
+                        <i className="fa-solid fa-circle-xmark"></i>
                     </button>
                 </div>
 

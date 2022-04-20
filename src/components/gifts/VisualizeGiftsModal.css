@@ -12,3 +12,19 @@
     justify-content: space-between;
     padding: 5px 0px 5px 0px;
 }
+
+@media screen and (max-width: 375px) {
+    
+    .button-group span {
+        display: none;
+    }
+
+}
+
+@media screen and (min-width: 376px) and (max-width: 1440px) {
+    
+    .button-group i {
+        display: none;
+    }
+
+}
