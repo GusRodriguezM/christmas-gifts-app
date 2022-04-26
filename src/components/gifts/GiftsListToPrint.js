@@ -17,7 +17,7 @@ export const GiftsListToPrint = React.forwardRef(({gifts}, ref) => {
 
                             <div className='info'>
                                 <span>{gift.name} ({gift.quantity})</span>
-                                <span>{gift.person}</span>
+                                <span>To: {gift.person}</span>
                             </div>
                         </div>
                     ))

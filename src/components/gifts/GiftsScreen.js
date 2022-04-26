@@ -120,16 +120,18 @@ export const GiftsScreen = () => {
           </>
         }
 
-        <button 
-          disabled={gifts.length === 0 ? true : false}
-          className={gifts.length === 0 ? 'button-disabled' : null}
-          onClick={handleCleanList}
-        >
-          <span>Clean the list</span>
-          <i className="fa-solid fa-dumpster"></i>
-        </button>
+        <div className='clean-visualize'>
+          <button 
+            disabled={gifts.length === 0 ? true : false}
+            className={gifts.length === 0 ? 'button-disabled' : null}
+            onClick={handleCleanList}
+          >
+            <span>Delete all</span>
+            <i className="fa-solid fa-dumpster"></i>
+          </button>
 
-        <VisualizeGiftsModal gifts={gifts} />
+          <VisualizeGiftsModal gifts={gifts} />
+        </div>
 
     </div>
   )

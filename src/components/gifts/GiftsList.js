@@ -13,7 +13,7 @@ export const GiftsList = ({ id, name, quantity, price, image, person, handleEdit
       <div className='gift-info'>
         <span>{name}</span>
         <span>({quantity}) - {quantity * price}</span>
-        <span>{person}</span>
+        <span>To: {person}</span>
       </div>
 
       <div className='button-container'>

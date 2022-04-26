@@ -23,6 +23,12 @@ span {
     overflow-wrap: break-word;
 }
 
+@media screen and (max-width: 375px) {
+    .gift-info {
+        font-size: 1.5rem;
+    }
+}
+
 @media screen and (max-width: 468px) {
     .gift {
         display: flex;

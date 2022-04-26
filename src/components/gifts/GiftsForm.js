@@ -144,7 +144,7 @@ export const GiftsForm = ({ id, handleAddGift, handleEditGift, handleDuplicateGi
                     />
 
                     <button onClick={handleGetRandomGift}>
-                        <span>Surprise Me!</span>
+                        <span>Surprise!</span>
                         <i className="fa-solid fa-shuffle"></i>
                     </button>
 
