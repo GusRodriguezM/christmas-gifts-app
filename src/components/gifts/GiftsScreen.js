@@ -6,6 +6,7 @@ import { GiftsForm } from './GiftsForm';
 import { VisualizeGiftsModal } from './VisualizeGiftsModal';
 
 import './GiftsScreen.css';
+import { EmptyList } from './EmptyList';
 
 export const GiftsScreen = () => {
 
@@ -96,7 +97,7 @@ export const GiftsScreen = () => {
 
         {
           <>
-            {gifts.length === 0 ? 'Please start adding gifts!' : 
+            {gifts.length === 0 ? (<EmptyList />) : 
             <div className='list'>
               {
                 gifts.map((gift, i) => (
